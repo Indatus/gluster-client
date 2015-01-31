@@ -52,7 +52,15 @@ node['mounts']['glusterfs'].each do |mnt, dev|
     device dev
     fstype "glusterfs"
     options "rw"
-    action [:mount, :enable]
+    action :mount
     not_if "cat /proc/mounts | grep #{mnt}"
+  end
+  
+    mount mnt do
+    device dev
+    fstype "glusterfs"
+    options "rw"
+    action :enable
+    not_if "cat /etc/fstab | grep #{mnt}"
   end
 end
