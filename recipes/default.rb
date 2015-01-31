@@ -53,5 +53,6 @@ node['mounts']['glusterfs'].each do |mnt, dev|
     fstype "glusterfs"
     options "rw"
     action [:mount, :enable]
+    not_if "cat /proc/mounts | grep #{mnt}"
   end
 end
