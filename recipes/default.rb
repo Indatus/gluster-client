@@ -34,9 +34,13 @@ when 'debian'
   end
 when 'rhel'
   node['gluster-client']['rhel_packages'].each do |pkg|
-    package pkg
+    package pkg do
+        version node['gluster-client']['rhel_version']
+        options "--disablerepo=* --enablerepo=glusterfs*"
+    end
   end
 end
+
 # do the mounting
 node['mounts']['glusterfs'].each do |mnt, dev|
 
