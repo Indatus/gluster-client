@@ -13,7 +13,7 @@ end
 apt_repository 'glusterfs-3_6' do
   uri node['gluster-client']['ubuntu_ppa']
   distribution node['lsb']['codename']
-  only_if { platform?("debian")  }
+  only_if { platform?("ubuntu")  }
 end
 
 # for rhel
