@@ -4,7 +4,7 @@ Installs glusterfs native client packages and mounts volumes.
 
 Requirements
 ------------
-* [~~yum~~](https://supermarket.chef.io/cookbooks/yum)
+* [yum](https://supermarket.chef.io/cookbooks/yum)
 * [apt](https://supermarket.chef.io/cookbooks/apt)
 
 Tested on Ubuntu 12.04, Debian 7.1 and SL6.5. Will not work on Debian earlier than 7.0, Ubuntu older than 12.04 or rhel based distros older than 6.0.
@@ -33,7 +33,7 @@ Just include `gluster-client` in your node's `run_list`:
 
 and specify the mounts in your role file:
 
-```ruby
+```json
     "mounts" => {
         "gluster" => {
             "/mnt/distributed-volume"=> "brick1.com,brick2.com,brick3.com,brick4.com:/volume-name"

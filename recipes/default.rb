@@ -24,7 +24,7 @@ remote_file "/etc/yum.repos.d/glusterfs-epel.repo" do
   group 'root'
   mode '0644'
   action :create_if_missing
-  only_if { platform_family?("rhel")  }
+  only_if { platform_family?("debian")  }
 end
 # install them packages
 case node['platform_family']
@@ -35,12 +35,11 @@ when 'debian'
 when 'rhel'
   node['gluster-client']['rhel_packages'].each do |pkg|
     package pkg do
-        version node['gluster-client']['rhel_version']
-        options "--disablerepo=* --enablerepo=glusterfs*"
+	version node['gluster-client']['rhel_version']
+	options "--disablerepo=* --enablerepo=glusterfs*"
     end
   end
 end
-
 # do the mounting
 node['mounts']['glusterfs'].each do |mnt, dev|
 
