@@ -24,7 +24,7 @@ remote_file "/etc/yum.repos.d/glusterfs-epel.repo" do
   group 'root'
   mode '0644'
   action :create_if_missing
-  only_if { platform_family?("debian")  }
+  only_if { platform_family?("rhel")  }
 end
 # install them packages
 case node['platform_family']
