@@ -46,8 +46,7 @@ node['mounts']['glusterfs'].each do |mnt, dev|
   directory mnt do
     recursive true
     mode 0777
-    not_if do
-      File.exist?(mnt)
+    not_if "stat -c%a /mnt/zd|grep 777"
     end
   end
 
