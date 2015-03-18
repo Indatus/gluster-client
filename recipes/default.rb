@@ -47,7 +47,6 @@ node['mounts']['glusterfs'].each do |mnt, dev|
     recursive true
     mode 0777
     not_if "stat -c%a /mnt/zd|grep 777"
-    end
   end
 
   mount mnt do
